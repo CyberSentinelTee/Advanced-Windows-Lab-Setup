@@ -6,15 +6,11 @@ It includes a Windows Server 2012 R2 domain controller, a domain-joined Windows 
 
 This lab is fully offline and intended for **educational and security testing purposes only**.
 
----
-
 ## Lab Topology
 [DC01.corp.local] 192.168.56.100 (Windows Server 2012 R2 - Domain Controller)  
 [WIN10-PC] 192.168.56.102 (Windows 10 - Domain Workstation)  
 [Metasploitable2] 192.168.56.128  
 [Kali Linux Attacker] 192.168.56.129  
-
----
 
 ## PART 1: Windows Server 2012 R2 — Domain Controller Setup
 
@@ -29,8 +25,6 @@ This lab is fully offline and intended for **educational and security testing pu
    DNS: 192.168.56.100
 4. Restart VM.
 
----
-
 ### 2. Promote to Domain Controller
 1. Open **Server Manager**.
 2. Go to **Add Roles and Features**.
@@ -44,8 +38,6 @@ This lab is fully offline and intended for **educational and security testing pu
 7. Create new forest: `corp.local`.
 8. Set **DSRM password**: `Password123!`.
 9. Complete wizard & reboot.
-
----
 
 ### 3. Create Realistic Users and Shares
 1. Open **Active Directory Users & Computers**.
