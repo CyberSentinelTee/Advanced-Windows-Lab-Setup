@@ -126,6 +126,7 @@ At login:
 
 ## References
 - Glen D. Singh, *Learn Kali Linux 2019: Perform Powerful Penetration Testing Using Kali Linux, Metasploit, Nessus, Nmap, and Wireshark*, Packt Publishing, 2019. ISBN: 978-1789611806.
+- EC-Council. *Certified Ethical Hacker (CEH) v13 Official Courseware*. Albuquerque, NM: EC-Council, 2023.
 
 ## Author
 Tafadzwa Nemukuyu(www.linkedin.com/in/tafadzwa-nemukuyu)
