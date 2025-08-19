@@ -51,7 +51,7 @@ This lab is fully offline and intended for **educational and security testing pu
 2. Create users:
     - `alice.user` → Password: `noob1234!!`
     - `soma.hr` → Password: `user2@123`
-    - `jane.dev` → Password: `letmein@2025`
+    - `erina.dev` → Password: `letmein@2025`
 3. Create groups:
     - **HR**
     - **Developers**
@@ -62,30 +62,84 @@ This lab is fully offline and intended for **educational and security testing pu
     ```powershell
     netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
 
-### 5. Enable Common Services (For Testing)
-Run in PowerShell (as Administrator):
-  #### Enable RDP
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
+### 5. Firewall Rules
+Allow essential ports for AD + exploitation scenarios.
+   #### Enable RDP
+   ```bash
+   Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
+   ```
 
-  #### Enable PSRemoting
-    Enable-PSRemoting -Force
+   #### Enable PSRemoting
+   ```bash
+   Enable-PSRemoting -Force
+   ```
 
-  #### Install IIS Web Server
-    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+   #### Install IIS Web Server
+   ```bash
+   Install-WindowsFeature -name Web-Server -IncludeManagementTools
+   ```
 
-  #### Install FTP Server
-    Install-WindowsFeature Web-Ftp-Server -IncludeAllSubFeature
+   #### Install FTP Server
+   ```bash
+   Install-WindowsFeature Web-Ftp-Server -IncludeAllSubFeature
+   ```
 
-  #### Restart WinRM Service
-    Restart-Service WinRM
+   #### Restart WinRM Service
+   ```bash
+   Restart-Service WinRM
+   ```
 
-  #### LDAP (389 TCP/UDP)
-    Enable-NetFirewallRule -DisplayGroup "Active Directory Domain Controller"
+   #### LDAP (389 TCP/UDP)
+   ```bash
+   Enable-NetFirewallRule -DisplayGroup "Active Directory Domain Controller"
+   ```
   
-  #### Install Telnet Server
-    dism /online /Enable-Feature /FeatureName:TelnetServer
-    sc config TlntSvr start= auto
-    net start TlntSvr
+   #### Install Telnet Server
+   ```bash
+   dism /online /Enable-Feature /FeatureName:TelnetServer
+   sc config TlntSvr start= auto
+   net start TlntSvr
+   ```
+
+   #### DNS
+   ```bash
+   netsh advfirewall firewall add rule name="DNS" protocol=UDP dir=in localport=53 action=allow
+   ```
+
+   #### LDAP
+   ```bash
+   netsh advfirewall firewall add rule name="LDAP" protocol=TCP dir=in localport=389 action=allow
+   ```
+
+   #### Kerberos
+   ```bash
+   netsh advfirewall firewall add rule name="Kerberos" protocol=UDP dir=in localport=88 action=allow
+   ```
+
+   #### RDP
+   ```bash
+   netsh advfirewall firewall add rule name="RDP" protocol=TCP dir=in localport=3389 action=allow
+   ```
+
+   #### WinRM
+   ```bash
+   netsh advfirewall firewall add rule name="WinRM" protocol=TCP dir=in localport=5985 action=allow
+   ```
+
+   #### SMB
+   ```bash
+   netsh advfirewall firewall add rule name="SMB" protocol=TCP dir=in localport=445 action=allow
+   ```
+
+   #### FTP
+   ```bash
+   netsh advfirewall firewall add rule name="FTP" protocol=TCP dir=in localport=21 action=allow
+   ```
+
+   #### Telnet
+   ```bash
+   netsh advfirewall firewall add rule name="Telnet" protocol=TCP dir=in localport=23 action=allow
+   ```
 
 Enabled Services 
 
