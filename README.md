@@ -35,7 +35,7 @@ This lab is fully offline and intended for **educational and security testing pu
     - File and Storage Services
 5. Finish installation.
 6. Click **Promote this server to a domain controller**.
-7. Create new forest: `corp.local`.
+7. Create new forest: `corp.lab`.
 8. Set **DSRM password**: `Password123!`.
 9. Complete wizard & reboot.
 
@@ -104,7 +104,7 @@ Enabled Services
 
 ### 2. Join to Domain
 1. Go to System → Rename PC or Join Domain.
-2. Enter: corp.local.
+2. Enter: corp.lab.
 3. Use:  
    Username: Administrator  
    Password: Password123!  
@@ -113,7 +113,7 @@ Enabled Services
 ### 3. Log in as Domain Users
 At login:
   - Click Other User.
-  - Enter: alice.user@corp.local
+  - Enter: alice.user@corp.lab
   - Password: Password123!
 
 ## Skills Demonstrated
