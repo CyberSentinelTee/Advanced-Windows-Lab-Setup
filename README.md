@@ -39,7 +39,14 @@ This lab is fully offline and intended for **educational and security testing pu
 8. Set **DSRM password**: `Password123!`.
 9. Complete wizard & reboot.
 
-### 3. Create Realistic Users and Shares
+### 3. DNS Configuration
+1. Open DNS Manager.
+2. Confirm Forward Lookup Zone: corp.lab (auto-created).
+3. Create Reverse Lookup Zone: 192.168.56.0/24.
+4. Add Records:
+   - dc1.corp.lab → 192.168.56.100
+  
+### 4. Create Realistic Users and Shares
 1. Open **Active Directory Users & Computers**.
 2. Create users:
     - `alice.user` → Password: `noob1234!!`
@@ -55,7 +62,7 @@ This lab is fully offline and intended for **educational and security testing pu
     ```powershell
     netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
 
-### 4. Enable Common Services (For Testing)
+### 5. Enable Common Services (For Testing)
 Run in PowerShell (as Administrator):
   #### Enable RDP
     Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
