@@ -39,12 +39,16 @@ This lab is fully offline and intended for **educational and security testing pu
 8. Set **DSRM password**: `Password123!`.
 9. Complete wizard & reboot.
 
+![DC-Config](DC%20Setup/DC_Config.png)
+
 ### 3. DNS Configuration
 1. Open DNS Manager.
 2. Confirm Forward Lookup Zone: corp.lab (auto-created).
 3. Create Reverse Lookup Zone: 192.168.56.0/24.
 4. Add Records:
    - dc1.corp.lab → 192.168.56.100
+
+![DNS-Config](DC%20Setup/DNS_Config.png)
   
 ### 4. Create Realistic Users and Shares
 1. Open **Active Directory Users & Computers**.
@@ -58,6 +62,9 @@ This lab is fully offline and intended for **educational and security testing pu
 4. Add users to groups.
 5. Create a shared folder:  
 - `C:\Shares\HRDocs` → share with **HR** group only.
+
+![User-Config](DC%20Setup/User_Creation.png)
+  
 6. Enable SMB file sharing:
     ```powershell
     netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
